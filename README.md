@@ -1,17 +1,17 @@
 
-🖥 Servidor em Python
+- 🖥 Servidor em Python
 
-Qt (GUI) para controlar o servidor
+- - Qt (GUI) para controlar o servidor
 
-Flask como backend HTTP
+- - Flask como backend HTTP
 
-SQLite como base de dados
+- - SQLite como base de dados
 
-Botões Ligar / Desligar / Sair
+- - botões Ligar / Desligar / Sair
 
-Log das ligações
+- - Log das ligações
 
-Janela do servidor permite ver, editar e apagar users
+- - janela do servidor permite ver, editar e apagar users
 
 
 🌐 Página Web
