@@ -1,32 +1,43 @@
+---
 
-- 🖥 Servidor em Python
+# 🖥 Servidor em Python (Qt + Flask + SQLite)
 
-- - Qt (GUI) para controlar o servidor
-
-- - Flask como backend HTTP
-
-- - SQLite como base de dados
-
-- - botões Ligar / Desligar / Sair
-
-- - Log das ligações
-
-- - janela do servidor permite ver, editar e apagar users
-
-
-🌐 Página Web
-
-HTML + CSS + JavaScript
-
-Dois campos para registar users
-
-Comunicação HTTP com o servidos
-
+Aplicação completa com **GUI em Qt**, **backend Flask**, **base de dados SQLite** e **frontend web** em HTML/CSS/JavaScript.
 
 ---
 
-📁 Estrutura do projeto
+## 🚀 Funcionalidades
 
+### 🖥 Servidor
+
+* GUI em **Qt**
+* Backend **Flask (HTTP)**
+* **SQLite** como base de dados
+* Botões:
+
+  * **Ligar**
+  * **Desligar**
+  * **Sair**
+* Log das ligações HTTP
+* Janela do servidor permite:
+
+  * Ver users
+  * Editar users
+  * Apagar users
+
+---
+
+### 🌐 Página Web
+
+* **HTML + CSS + JavaScript**
+* Dois campos para registo de users
+* Comunicação HTTP com o servidor Flask
+
+---
+
+## 📁 Estrutura do Projeto
+
+```text
 projeto/
 │
 ├── server_qt.py        # GUI Qt + controlo do Flask
@@ -38,12 +49,13 @@ projeto/
     ├── index.html
     ├── style.css
     └── script.js
-
+```
 
 ---
 
-🗄 database.py (SQLite)
+## 🗄 database.py (SQLite)
 
+```python
 import sqlite3
 
 DB_NAME = "users.db"
@@ -95,12 +107,13 @@ def delete_user(user_id):
     cur.execute("DELETE FROM users WHERE id=?", (user_id,))
     conn.commit()
     conn.close()
-
+```
 
 ---
 
-🌐 flask_app.py (Servidor HTTP)
+## 🌐 flask_app.py (Servidor HTTP)
 
+```python
 from flask import Flask, request, jsonify
 from database import init_db, get_users, add_user, update_user, delete_user
 from datetime import datetime
@@ -141,16 +154,17 @@ def remove_user(user_id):
 
 def run_flask():
     app.run(host="0.0.0.0", port=5000, debug=False)
-
+```
 
 ---
 
-🖥 server_qt.py (Qt + controlo do servidor)
+## 🖥 server_qt.py (Qt + controlo do servidor)
 
+```python
 import sys, threading
 from PyQt5.QtWidgets import (
     QApplication, QWidget, QPushButton, QTextEdit,
-    QVBoxLayout, QHBoxLayout, QMessageBox
+    QVBoxLayout, QHBoxLayout
 )
 import flask_app
 
@@ -199,12 +213,13 @@ app = QApplication(sys.argv)
 win = ServerGUI()
 win.show()
 sys.exit(app.exec_())
-
+```
 
 ---
 
-🌐 web/index.html
+## 🌐 web/index.html
 
+```html
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -226,12 +241,13 @@ sys.exit(app.exec_())
 <script src="script.js"></script>
 </body>
 </html>
-
+```
 
 ---
 
-🎨 web/style.css
+## 🎨 web/style.css
 
+```css
 body {
     font-family: Arial;
     background: #1e1e1e;
@@ -243,12 +259,13 @@ input, button {
     padding: 8px;
     margin: 5px;
 }
-
+```
 
 ---
 
-⚙ web/script.js
+## ⚙ web/script.js
 
+```javascript
 const API = "http://localhost:5000/users";
 
 function loadUsers() {
@@ -284,33 +301,30 @@ function del(id) {
 }
 
 loadUsers();
-
-
----
-
-✅ O que já faz
-
-✔ Registo via web
-✔ Ver users
-✔ Apagar users
-✔ SQLite
-✔ GUI Qt
-✔ Log das ligações HTTP
-✔ Ligar / Desligar / Sair
-
+```
 
 ---
 
-próximo passo:
+## ✅ O que já faz
 
-🔐 adicionar login + tokens
+* ✔ Registo via web
+* ✔ Ver users
+* ✔ Apagar users
+* ✔ SQLite
+* ✔ GUI Qt
+* ✔ Log das ligações HTTP
+* ✔ Ligar / Desligar / Sair
 
-🧑‍💻 editar users diretamente na GUI Qt
+---
 
-🌍 servir a página web diretamente pelo Flask
+## 🔜 Próximos Passos
 
-📜 log em ficheiro
+* 🔐 Login + tokens
+* 🧑‍💻 Editar users diretamente na GUI Qt
+* 🌍 Servir a página web pelo Flask
+* 📜 Log em ficheiro
+* 🔄 Auto-refresh na web
+* 🔒 HTTPS
 
-🔄 auto-refresh na web
+---
 
-🔒 HTTPs
